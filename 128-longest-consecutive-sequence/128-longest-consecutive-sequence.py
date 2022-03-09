@@ -31,8 +31,7 @@ class Solution(object):
 
         return self.maxSize
 
-S = Solution()
-print(S.longestConsecutive([0]))
+
 
 
 
