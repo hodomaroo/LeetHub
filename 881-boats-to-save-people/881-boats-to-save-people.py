@@ -14,7 +14,7 @@ class Solution:
             if not isValid[i]: continue
             
             target = bisect_right(people,limit - people[i] , lo=i + 1, hi=limitIndex) - 1
-            print(i,target)
+            #print(i,target)
             if target > i: 
                 isValid[target] = False
 
