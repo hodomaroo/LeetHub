@@ -33,7 +33,4 @@ class FreqStack:
 
         self.valueStackDict[val].pop()
 
-        if self.valueStackDict[val]:
-            heappush(self.heap, (-len(self.valueStackDict[val]), self.valueStackDict[val][-1], val))
-
         return val
