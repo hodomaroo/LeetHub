@@ -43,7 +43,7 @@ class WordFilter:
         for index, word in enumerate(words):
             for i in range(1, min(11, len(word) + 1)):
                 # 1 ~ 11개까지
-                self.FilterTree.insert(word=word[-i:] + "{" + word[:min(len(word), 11)], index=index)
+                self.FilterTree.insert(word=word[-i:] + "{" + word, index=index)
 
     def f(self, prefix: str, suffix: str) -> int:
         return self.FilterTree.search(suffix + "{" + prefix)
