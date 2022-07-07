@@ -6,6 +6,7 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+
 class Solution:
     def __init__(self):
         self.ans = -float("inf")
@@ -13,14 +14,15 @@ class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
         self.ans = -float("inf")
         def dfs(node : TreeNode) -> int:
-            l = dfs(node.left) if node.left else 0
-            r = dfs(node.right) if node.right else 0
+            l,lMax = dfs(node.left) if node.left else [0,-float("inf")]
+            r,rMax = dfs(node.right) if node.right else [0,-float("inf")]
 
             curVal = node.val + max(0, l, r)
             self.ans = max(self.ans, node.val + l + r, curVal)
-            return curVal
-        
-        dfs(root)
-        return self.ans
+            return [curVal, max(curVal, node.val + l + r, lMax, rMax)]
+
+        return dfs(root)[1]
+
+
 
 
