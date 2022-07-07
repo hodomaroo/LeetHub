@@ -8,9 +8,6 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def __init__(self):
-        self.ans = -float("inf")
-
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
         self.ans = -float("inf")
         def dfs(node : TreeNode) -> int:
