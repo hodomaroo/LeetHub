@@ -16,7 +16,7 @@ class NumArray:
         while index:
             index >>= 1
             
-            self.segmentTree[index] = self.segmentTree[index << 1] + self.segmentTree[(index << 1) + 1]     
+            self.segmentTree[index] = self.segmentTree[index << 1] + self.segmentTree[(index << 1) | 1]     
 #        print(self.segmentTree)
             
 
@@ -26,7 +26,7 @@ class NumArray:
             if left == lower and right == upper:
                 return self.segmentTree[index]
             
-            mid = (lower + upper) // 2 #middle of node's range
+            mid = lower + (upper - lower) // 2
             
             value = 0
             
@@ -34,7 +34,7 @@ class NumArray:
                 value += getSegmentValue(index << 1, lower, mid, left, min(right,mid))
             
             if right > mid:# [mid, right)
-                value += getSegmentValue((index << 1) + 1, mid, upper , max(mid, left) , right) 
+                value += getSegmentValue((index << 1) | 1, mid, upper , max(mid, left) , right) 
             return value
         
         
