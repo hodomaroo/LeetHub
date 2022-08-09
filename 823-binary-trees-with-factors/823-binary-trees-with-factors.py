@@ -9,39 +9,31 @@ class Solution:
         def dfs(index : int) -> int: 
             if dp[index] >= 0:
                 return dp[index]
-                
+            
             dp[index] = 1
             
             for i in range(index):
                 if arr[index] % arr[i] or arr[index] // arr[i] not in arrDict: continue
-                
                 j = arrDict[arr[index] // arr[i]]
+                
                 if i != j:
                     add = dfs(i) * dfs(j)
-                
                 else:
                     add = dfs(i) * (dfs(i) - 1)  + dfs(i)
-                    #add = max(add % MOD, 1)
                     
                 add %= MOD
                 dp[index] = (dp[index] + add) % MOD           #양쪽이 동일할 때, 문제가 생김 -> 바꿔도.. 똑같은 트리..
             
-                    
+                
             return dp[index]    
-        
         
         ans = 0
         for i in range(len(arr)):
             ans = (dfs(i) + ans) % MOD
-        print(dp)
+        
         return ans
             
                     
-            
-            
-            
-        
-        #각각의 노드들이 자기가 부모일 때, 만들어 낼 수 있는 경우의 수
         
         
         
