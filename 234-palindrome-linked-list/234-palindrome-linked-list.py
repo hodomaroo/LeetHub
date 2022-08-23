@@ -16,8 +16,7 @@ class Solution:
         _prev = head
         for i in range(length // 2 + length % 2):
             if i == (length // 2 + length % 2 - 1):
-                sv = _prev.next
-                _prev.next = None
+                sv,_prev.next = _prev.next,None
                 _prev = sv
             else:
                 _prev = _prev.next
@@ -27,8 +26,7 @@ class Solution:
         
         while _next:
             _nnext,_next.next = _next.next,_prev #다다음 노드! -> 세이브 해놓을 필요 있음
-            _prev = _next 
-            _next = _nnext #다음노드를 _nnext로 변경
+            _prev,_next = _next ,_nnext
         
         while head and _prev:
             if head.val != _prev.val:
