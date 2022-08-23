@@ -1,8 +1,3 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
         if not head:
@@ -27,20 +22,20 @@ class Solution:
             else:
                 _prev = _prev.next
         
-        _next = _prev.next #원래 다음 노드가 가르키던 곳 /
+        _next = _prev.next #원래 다음 노드가 가르키던 곳
         _prev.next = None
         
         while _next:
-            _nnext = _next.next #다다음 노드! -> 세이브 해놓을 필요 있음
-            _next.next = _prev #다음 노드의 이전 노드(현재 노드)
+            _nnext,_next.next = _next.next,_prev #다다음 노드! -> 세이브 해놓을 필요 있음
             _prev = _next 
             _next = _nnext #다음노드를 _nnext로 변경
         
         while head and _prev:
             if head.val != _prev.val:
                 return False
-            head = head.next
-            _prev = _prev.next
+            
+            head, _prev = head.next, _prev.next
+            
         return True
                 
         
