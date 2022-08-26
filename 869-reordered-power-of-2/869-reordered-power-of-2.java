@@ -12,7 +12,6 @@ class Solution {
             n /= 10;
         }
         used = new boolean[array.size()] ;
-        System.out.println(array.toString());
         
         dfsFunction(0, 0);
         return count == 1;
@@ -27,7 +26,6 @@ class Solution {
             
             if (cnt == 1 && v != tarV){
                 tarV = v;
-            
                 count += 1;
             }
             return;
