@@ -1,24 +1,11 @@
 class Solution {
     public int[][] diagonalSort(int[][] mat) {
-        
-        ArrayList<Integer[]> arr = new ArrayList<Integer[]>();
-
         for(int i = 0 ; i < mat[0].length ; i++)
-            arr.add(new Integer[]{0,i});
-        
+            sortPoint(mat, 0,  i); 
         
         for(int i = 1 ; i < mat.length ; i++)
-            arr.add(new Integer[]{i,0});
-        
-        for(Integer[] array : arr){
-            for(Integer v : array)
-                System.out.print(v + " ");
-            System.out.println();
-        }
-        
-        for(Integer[] node : arr)
-            sortPoint(mat, node[0], node[1]); 
-
+            sortPoint(mat, i,  0); 
+    
        return mat;   
     }
     
