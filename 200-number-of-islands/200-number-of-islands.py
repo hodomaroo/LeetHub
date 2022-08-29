@@ -13,7 +13,7 @@ class Solution:
                     
                     if 0 <= nx < len(grid) and 0 <= ny < len(grid[0]) and grid[nx][ny] == "1":
                         queue.append((nx,ny))
-                        grid[nx][ny] = "0"
+                        grid[nx][ny] = False
         
         count = 0
         for i in range(len(grid)):
