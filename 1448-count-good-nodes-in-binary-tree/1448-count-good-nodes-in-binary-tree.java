@@ -15,14 +15,13 @@
  */
 class Solution {
     public int goodNodes(TreeNode root) {
-        return dfs(root, -10000);
+        if(root != null)
+            return dfs(root, -10000);
+        return 0;
     }
     
     private int dfs(TreeNode node, int maxValue){
         int count = 0;
-        if(node == null)
-            return 0;
-        
         if(node.val >= maxValue)
             count += 1;
         
