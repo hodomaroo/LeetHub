@@ -18,6 +18,7 @@ class Solution:
             if pos < offset:
                 offset = pos
                 offsetQueue.appendleft([nodeId]);
+                
             elif pos - offset >= len(offsetQueue):
                 offsetQueue.append([nodeId]);
             else:
