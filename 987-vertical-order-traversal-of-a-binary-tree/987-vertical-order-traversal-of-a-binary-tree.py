@@ -14,7 +14,6 @@ class Solution:
         ans = []
         def dfs(node : TreeNode, pos : int, depth : int):
             nonlocal nodeId,offset
-            print(node.val, pos, offset, pos - offset, offsetQueue)
             
             if pos < offset:
                 offset = pos
