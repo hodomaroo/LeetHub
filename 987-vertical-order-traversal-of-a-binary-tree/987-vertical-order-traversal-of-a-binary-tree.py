@@ -8,18 +8,19 @@ class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
         offsetQueue = deque([[]])
         offset = 0
-        information = []
         nodeId = 0
-        ans = []
+        
+        information = []
+        
         def dfs(node : TreeNode, pos : int, depth : int):
             nonlocal nodeId,offset
-            
             if pos < offset:
                 offset = pos
-                offsetQueue.appendleft([nodeId]);
+                offsetQueue.appendleft([nodeId])
                 
             elif pos - offset >= len(offsetQueue):
-                offsetQueue.append([nodeId]);
+                offsetQueue.append([nodeId])
+            
             else:
                 offsetQueue[pos - offset].append(nodeId)
             
@@ -28,6 +29,7 @@ class Solution:
             
             if node.left:
                 dfs(node.left, pos - 1, depth + 1)
+                
             if node.right:
                 dfs(node.right, pos + 1, depth + 1)
             
