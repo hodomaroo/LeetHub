@@ -6,35 +6,34 @@
 #         self.right = right
 class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
-        visits = []
-        
+        offsetQueue = deque([[]])
+        offset = 0
+        heights = []
+        values = []
+        nodeId = 0
+        ans = []
         def dfs(node : TreeNode, pos : int, depth : int):
-            nonlocal visits
+            nonlocal nodeId,offset
+            print(node.val, pos, offset, pos - offset, offsetQueue)
             
-            visits.append((pos,depth,node.val,))
+            if pos < offset:
+                offset = pos
+                offsetQueue.appendleft([nodeId]);
+            elif pos - offset >= len(offsetQueue):
+                offsetQueue.append([nodeId]);
+            else:
+                offsetQueue[pos - offset].append(nodeId)
+            
+            values.append(node.val);
+            heights.append(depth);            
+            nodeId += 1
             
             if node.left:
                 dfs(node.left, pos - 1, depth + 1)
-            
             if node.right:
                 dfs(node.right, pos + 1, depth + 1)
             
         dfs(root, 0, 0)
-        
-        visits.sort()
-        ans = []
-        line = []
-        nowPos = None
-        
-        for pos,depth,v in visits:
-            if not line or nowPos == pos:
-                line.append(v)
-                nowPos = pos
             
-            else:
-                nowPos = pos
-                ans.append(line)
-                line = [v]
-        ans.append(line)
-        return ans
+        return [[values[i] for i in sorted(col, key = lambda x : (heights[x], values[x]))] for col in offsetQueue]
         
