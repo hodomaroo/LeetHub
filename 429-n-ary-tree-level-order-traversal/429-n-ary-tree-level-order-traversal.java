@@ -21,9 +21,7 @@ class Solution {
     public List<List<Integer>> levelOrder(Node root) {
         Queue<Node> queue = new LinkedList<Node>();
         int front = 1, back = 0;
-        
-        
-        List ans = new ArrayList();
+        List<List<Integer>> ans = new ArrayList<>();
        
         if(root == null)
             return ans;
