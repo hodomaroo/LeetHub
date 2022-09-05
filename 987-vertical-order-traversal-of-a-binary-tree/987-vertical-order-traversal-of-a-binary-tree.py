@@ -33,7 +33,7 @@ class Solution:
             
             else:
                 nowPos = pos
-                ans.append(line[:])
+                ans.append(line)
                 line = [v]
         ans.append(line)
         return ans
