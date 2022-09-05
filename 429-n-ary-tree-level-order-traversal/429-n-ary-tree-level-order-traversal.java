@@ -20,32 +20,34 @@ class Node {
 class Solution {
     public List<List<Integer>> levelOrder(Node root) {
         Queue<Node> queue = new LinkedList<Node>();
-        Queue<Node> nextQueue = new LinkedList<Node>();
+        int front = 1, back = 0;
+        
+        
         List ans = new ArrayList();
        
         if(root == null)
             return ans;
         
         queue.add(root);
+            
+        List line = new ArrayList();
         
-        int depth = 0;
         while(queue.peek() != null){
-            
-            List line = new ArrayList();
-            
-            while(queue.peek() != null){
-                Node node = queue.poll();
-                line.add(node.val);
-                
-                for(Node child : node.children)
-                    nextQueue.add(child);
+            Node node = queue.poll();
+            line.add(node.val);    
+            front -= 1;
+
+            for(Node child : node.children){
+                queue.add(child);
+                back += 1;
             }
-            ans.add(line);
             
-            
-            while(nextQueue.peek() != null)
-                queue.add(nextQueue.poll());
-            
+            if(front == 0){
+                front = back;
+                back = 0;
+                ans.add(line);
+                line = new ArrayList();
+            }
         }
         
         return ans;
