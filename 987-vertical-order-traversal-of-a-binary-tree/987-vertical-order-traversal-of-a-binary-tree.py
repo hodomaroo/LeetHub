@@ -8,8 +8,7 @@ class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
         offsetQueue = deque([[]])
         offset = 0
-        heights = []
-        values = []
+        information = []
         nodeId = 0
         ans = []
         def dfs(node : TreeNode, pos : int, depth : int):
@@ -24,8 +23,7 @@ class Solution:
             else:
                 offsetQueue[pos - offset].append(nodeId)
             
-            values.append(node.val);
-            heights.append(depth);            
+            information.append((depth, node.val))
             nodeId += 1
             
             if node.left:
@@ -35,5 +33,5 @@ class Solution:
             
         dfs(root, 0, 0)
             
-        return [[values[i] for i in sorted(col, key = lambda x : (heights[x], values[x]))] for col in offsetQueue]
+        return [[information[i][1] for i in sorted(col, key = lambda x : information[x])] for col in offsetQueue]
         
