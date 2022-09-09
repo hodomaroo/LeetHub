@@ -6,8 +6,7 @@ class Solution:
         count = 0
         
         for att, dep in properties:
-            if maxi > dep:
-                count += 1
+            count += maxi > dep
             maxi = max(dep,maxi)
             
         return count
