@@ -2,8 +2,8 @@ from time import monotonic
 
 
 class Solution:
-    def maxProfit(self, k: int, points: List[int]) -> int:
-        """
+    def maxProfit(self, k: int, prices : list[int]) -> int:
+        
         monotonic = []
         
         points = []
@@ -18,7 +18,7 @@ class Solution:
                 monotonic.append(v)
         #k번의 트랜잭션으로 얻을 수 있는 최대 이득
         #근데 그냥
-        """
+        
         dp = [[0] * (k + 1) for _ in range(len(points))] #포인트별로 k번의 트랜잭션
         if not k or len(points) < 1:
             return 0
@@ -32,7 +32,7 @@ class Solution:
                 dp[j][i] = max(dp[j-1][i], points[j] + MAX)
                 MAX = max(-points[j] +  dp[j][i - 1],MAX)
                 maxi = max(maxi, dp[j][i])
-        print(dp)
+        
         return maxi
                     
             
