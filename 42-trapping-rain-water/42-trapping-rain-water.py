@@ -8,5 +8,4 @@ class Solution:
             left[i] = max(0 if i == 0 else left[i-1], height[i])
             right[-i - 1] = max(0 if i == 0 else right[-i], height[-i - 1])
         
-        #print(left,right)
         return sum(max(0, min(left[i], right[i]) - height[i]) for i in range(len(height)))
