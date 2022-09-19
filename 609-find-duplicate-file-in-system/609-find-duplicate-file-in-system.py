@@ -11,7 +11,7 @@ class Solution:
             info = info[1].split("(")
             fileExpe = info[0]
             fileContents = info[1][:-1]
-            print(fileName, fileExpe, fileContents)
+            
             return [fileName, fileExpe, fileContents]
                 
         #print(getInformationOfFile("1.txt(abcd)"))
