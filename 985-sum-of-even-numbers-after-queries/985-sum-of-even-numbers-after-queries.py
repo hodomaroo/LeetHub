@@ -12,5 +12,4 @@ class Solution:
             
             nums[i] += v
             ans.append(ssum)
-            
         return ans
