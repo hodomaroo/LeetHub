@@ -4,13 +4,8 @@ class Solution:
         MOD = pow(10,9) + 7
         
         for ii in range(1,n + 1):
-            i = ii
-            for count in range(30):
-                i //= 2
-                if not i: break
+            for count in range(20, -1, -1):
+                if ii & (1 << count): break
                 
             cur = (cur * (2 << count) + ii) % MOD
-        return cur
-        
-        
-        
+        return cur     
