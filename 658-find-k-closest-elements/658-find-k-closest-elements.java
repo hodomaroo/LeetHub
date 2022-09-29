@@ -15,7 +15,7 @@ class Solution {
             if(partSum < minPartSum)
                 minIndex = i;
                 minPartSum = partSum;
-            System.out.println(partSum);
+            //System.out.println(partSum);
             partSum -= Math.abs(arr[i] - x);
         }
         
