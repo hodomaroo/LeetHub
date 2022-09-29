@@ -9,7 +9,7 @@ class Solution {
         for(int i = 0 ; i < k - 1; i++)
             partSum += Math.abs(arr[i] - x);
         
-        int minPartSum = 100000000, minIndex = 0;
+        int minPartSum = 0, minIndex = 0;
         for(int i = 0 ; i < arr.length - k + 1; i++){
             partSum += Math.abs(arr[i + k - 1] - x);
             if(partSum < minPartSum)
