@@ -6,6 +6,4 @@ class Solution:
             
             return (dfs(node.left) if node.left else []) + (dfs(node.right) if node.right else [])
         
-        print(dfs(root1))
-        print(dfs(root2))
         return dfs(root1) == dfs(root2)
