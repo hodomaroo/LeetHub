@@ -13,9 +13,7 @@ class Solution:
             return _sum[node]
         dfs(root)
         
-        print(_sum.values())
         target = min(_sum.values(), key = lambda x : abs(_sum[root] // 2 - x))
-        print(target, _sum[root] - target)
         return target * (_sum[root] - target) % MOD
         
         
