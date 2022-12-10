@@ -9,7 +9,6 @@ class Solution:
         MOD,_sum = 10**9 + 7, dict()
         def dfs(node : TreeNode) -> int:
             _sum[node] = node.val + (dfs(node.left) if node.left else 0) + (dfs(node.right) if node.right else 0)
-            print(_sum[node])
             return _sum[node]
         dfs(root)
         
