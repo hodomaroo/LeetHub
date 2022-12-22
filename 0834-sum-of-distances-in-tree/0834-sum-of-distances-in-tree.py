@@ -2,8 +2,7 @@ class Solution:
     def sumOfDistancesInTree(self, n: int, edges: List[List[int]]) -> List[int]:
         
         #자기 자신도 child로 생각하는게 가능
-        childs = [1] * n
-        sums = [0] * n
+        childs,sums = [1] * n,[0] * n
         visit = [False] * n
         graph = [[] for _ in range(n)]
         
@@ -37,7 +36,6 @@ class Solution:
             graph[b].append(a)
         
         dfs1(0)        
-        
         
         visit = [False] * n
         dfs2(0)
