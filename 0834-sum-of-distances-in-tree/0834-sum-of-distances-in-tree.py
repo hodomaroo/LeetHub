@@ -25,7 +25,7 @@ class Solution:
             for nextnode in graph[node]:
                 if visit[nextnode]: continue
                     
-                #부모는 child의 자식 수만큼의 값을 추가로 가짐
+                #자식의 sums값 -> 부모의 전체 sums - 해당 자식으로 인해 유래된 값 + (루트의 자식 - 해당 자식의 전체 자식 수)
                 sums[nextnode] += sums[node] - (sums[nextnode] + childs[nextnode]) + (childs[node] - childs[nextnode])
                 childs[nextnode] = childs[0]
                 
