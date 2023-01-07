@@ -2,13 +2,9 @@ class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         accum,idx = 0, 0
         
-        if sum(gas) < sum(cost):
-            return -1
-        
-        loop = False
-        for i in range(len(gas)):
-            if loop and idx == i:
-                return idx
+        for i in range(len(gas)):    
+            if i and idx == i:
+                return idx if accum >= 0 else -1
             
             accum += gas[i] - cost[i]
             
@@ -16,7 +12,9 @@ class Solution:
                 idx = len(gas) - 1 if not idx else idx - 1
                 accum += gas[idx] - cost[idx]
                 
-            loop = True
-                
-        print(idx)
-        return idx
+                if i == idx and accum < 0:
+                    return -1
+        
+            
+        return 0
+        
