@@ -4,7 +4,7 @@ class Solution:
         
         for i in range(len(gas)):    
             if i and idx == i:
-                return idx if accum >= 0 else -1
+                return idx
             
             accum += gas[i] - cost[i]
             
@@ -14,7 +14,6 @@ class Solution:
                 
                 if i == idx and accum < 0:
                     return -1
-        
             
         return 0
         
