@@ -1,7 +1,6 @@
 class Solution:
     def minTime(self, n: int, edges: List[List[int]], hasApple: List[bool]) -> int:
-        graph = [[] for _ in range(n)]
-        visit = [False] * n
+        graph,visit = [[] for _ in range(n)], [False] * n
         
         for a,b in edges:
             graph[a].append(b)
