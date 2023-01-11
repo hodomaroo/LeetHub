@@ -10,7 +10,7 @@ class Solution:
         def dfs(node : int) -> int:
             visit[node] = True
             res = sum(dfs(child) for child in graph[node] if not visit[child])
-            return res + (hasApple[node] or res > 0) * 2 * (node != 0)
+            return res +  (0 if node == 0 else (hasApple[node] or res > 0) * 2)
             
             
         return dfs(0)
