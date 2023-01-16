@@ -3,8 +3,8 @@ class Solution:
         def function(a):
             return (a[0] >= b[0] and a[1] < b[1]) or (a[0] <= b[0] and a[1] >= b[1]) or (a[0] >= b[0] and a[0] <= b[1]) or (a[1] >= b[0] and a[1] <= b[1])
         
-        if not intervals:
-            return [b]
+        # if not intervals:
+        #     return [b]
         
         inter = list(filter(function, intervals))
         
