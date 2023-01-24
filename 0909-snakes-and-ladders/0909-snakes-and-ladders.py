@@ -3,10 +3,6 @@ class Solution:
         board = board[::-1]
         board[1::2] = [v[::-1] for v in board[1::2]]
         
-        
-        
-        print(*board, sep = "\n")        
-        
         dp = [999] * len(board) * len(board[0])
         q = deque([0])
         dp[0] = 0
