@@ -13,8 +13,8 @@ class Solution:
                 if child == par: continue
                     
                 c,f = dfs(node, child)
-                count += c
-                fuel += f + ceil(c / seats) #연료는 그냥 더하면 됨
+                count,fuel = count + c, fuel + f + ceil(c / seats)
+                
             return [count, fuel] 
                 
         return dfs(-1, 0)[1]
