@@ -14,7 +14,7 @@ class Solution:
             node = queue.popleft()
             
             for v in [node - 1, node + 1] + valNodeMap[arr[node]]:
-                if 0 <= v < len(arr) and dp[v] == MAX:
+                if 0 <= v  and v < len(arr) and dp[v] == MAX:
                     queue.append(v)
                     dp[v] = dp[node] + 1
                 
