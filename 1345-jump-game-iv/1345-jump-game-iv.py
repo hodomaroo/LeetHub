@@ -17,7 +17,7 @@ class Solution:
                 dp[node - 1] = dp[node] + 1
                 queue.append(node - 1)
             
-            if node != len(arr) - 1 and dp[node + 1] == MAX:
+            if node < len(arr) - 1 and dp[node + 1] == MAX:
                 dp[node + 1] = dp[node] + 1
                 queue.append(node + 1)
                 
