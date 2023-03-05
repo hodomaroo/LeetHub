@@ -26,7 +26,7 @@ class Solution:
                 dp[v] = dp[node] + 1
                 queue.append(v)
                 
-            valNodeMap[arr[node]] = []
+            valNodeMap[arr[node]].clear()
         return dp[-1]
                     
             
