@@ -2,7 +2,6 @@ class Solution:
     def minJumps(self, arr: List[int]) -> int:
         queue = deque([0])
         valNodeMap = defaultdict(list)
-        valVisit = set()
         
         for i in range(len(arr)):
             valNodeMap[arr[i]].append(i)
@@ -21,13 +20,11 @@ class Solution:
                 dp[node + 1] = dp[node] + 1
                 queue.append(node + 1)
                 
-            if arr[node] not in valVisit:
-                valVisit.add(arr[node])
-                
-                for v in valNodeMap[arr[node]]:
-                    if dp[v] != float("inf"): continue
-                    dp[v] = dp[node] + 1
-                    queue.append(v)
+            for v in valNodeMap[arr[node]]:
+                if dp[v] != float("inf"): continue
+                dp[v] = dp[node] + 1
+                queue.append(v)
+            valNodeMap[arr[node]].clear()
         return dp[-1]
                     
             
