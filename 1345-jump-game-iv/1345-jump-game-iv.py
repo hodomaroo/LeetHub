@@ -13,7 +13,7 @@ class Solution:
         while queue:
             node = queue.popleft()
             
-            if node != 0 and dp[node - 1] == MAX:
+            if node > 0 and dp[node - 1] == MAX:
                 dp[node - 1] = dp[node] + 1
                 queue.append(node - 1)
             
