@@ -13,18 +13,10 @@ class Solution:
         while queue:
             node = queue.popleft()
             
-            if node > 0 and dp[node - 1] == MAX:
-                dp[node - 1] = dp[node] + 1
-                queue.append(node - 1)
-            
-            if node < len(arr) - 1 and dp[node + 1] == MAX:
-                dp[node + 1] = dp[node] + 1
-                queue.append(node + 1)
-                
-            for v in valNodeMap[arr[node]]:
-                if dp[v] != MAX: continue
-                dp[v] = dp[node] + 1
-                queue.append(v)
+            for v in [node - 1, node + 1] + valNodeMap[arr[node]]:
+                if 0 <= v < len(arr) and dp[v] == MAX:
+                    queue.append(v)
+                    dp[v] = dp[node] + 1
                 
             valNodeMap[arr[node]] = []
         return dp[-1]
