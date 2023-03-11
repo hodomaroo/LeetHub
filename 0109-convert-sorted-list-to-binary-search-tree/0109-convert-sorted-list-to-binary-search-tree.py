@@ -17,8 +17,8 @@ class Solution:
             head = head.next
         
         def dfs(left : int, right : int) -> TreeNode: #구간 -> [left, right)
-            mid = (left + right) // 2
             if left == right:   return None
+            mid = (left + right) // 2
             
             node = TreeNode(val = nodes[mid])
             
