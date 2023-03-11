@@ -22,9 +22,7 @@ class Solution:
             
             node = TreeNode(val = nodes[mid])
             
-            node.left = dfs(left, mid)
-            node.right = dfs(mid + 1, right)
-            
+            node.left, node.right = dfs(left, mid),dfs(mid + 1, right)
             return node
             
         return dfs(0, len(nodes))
