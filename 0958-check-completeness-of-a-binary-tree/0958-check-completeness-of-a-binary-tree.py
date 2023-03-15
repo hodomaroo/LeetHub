@@ -6,20 +6,17 @@
 #         self.right = right
 class Solution:
     def isCompleteTree(self, root: Optional[TreeNode]) -> bool:
-        visit = [False] * 100
-        flag = False
+        visit = [False] * 101
+        
         def dfs(node : TreeNode, code : int):
-            if not node: return
-            if code >= 100: 
-                flag = True
-                return
-                
-            visit[code] = True
+            if not node: return 
+            visit[min(100, code)] |= node != None
+        
             dfs(node.left, code * 2 + 1)
             dfs(node.right, code * 2 + 2)
         dfs(root, 0)
         
-        return not flag and sum(visit) == sum(visit[:visit.index(False)])
+        return not visit[-1] and sum(visit) == sum(visit[:visit.index(False)])
 
         
             
