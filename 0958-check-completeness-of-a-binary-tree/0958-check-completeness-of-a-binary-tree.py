@@ -14,9 +14,10 @@ class Solution:
         
             dfs(node.left, code * 2 + 1)
             dfs(node.right, code * 2 + 2)
+            
         dfs(root, 0)
         
-        return not visit[-1] and sum(visit) == sum(visit[:visit.index(False)])
+        return not visit[-1] and visit.index(False) > 100 - operator.indexOf(reversed(visit), True) 
 
         
             
