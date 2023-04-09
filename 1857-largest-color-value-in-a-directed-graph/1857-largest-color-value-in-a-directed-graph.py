@@ -35,10 +35,10 @@ class Solution:
         
         for i in range(len(colors)):
             if groups[i]: continue
-            result = dfs(i,i + 1)
-            if result == INVALID:   return -1
+            result = max(dfs(i,i + 1))
+            if result == MIN:   return -1
             
-            _ans = max(_ans, max(result))
+            _ans = max(_ans, result)
             
         return _ans if _ans >= 0 else -1
                     
