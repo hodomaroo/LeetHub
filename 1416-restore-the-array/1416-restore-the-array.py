@@ -1,31 +1,20 @@
 class Solution:
     def numberOfArrays(self, s: str, k: int) -> int:
         MOD = 10 ** 9 + 7
-        dp = [0] * (len(s) + 1)
-        dp[-2] = 1
         
-        
-        for i in range(len(s) - 1, -1, -1):
-            value = 0
+        @cache
+        def dfs(index : int) -> int:
+            if index == len(s): return 1
+            if s[index] == "0": return 0
+            value,_return = 0,0
             
-            for j in range(i, -1, -1):
-                value += pow(10, (i - j)) * int(s[j])
-                
-
-                if value > k or (i - j) >= 11: break
-                if s[j] == "0" or value == 0: continue
-                
-
-                dp[j - 1] = (dp[j - 1] + dp[i]) % MOD
-        #print(dp[:-1])
-        return dp[-1]
+            for i in range(index, min(len(s), index + 11)):
+                value = value * 10 + int(s[i])
+                if 1 <= value <= k:
+                    _return = (_return + dfs(i + 1)) % MOD
+            return _return 
+        
+        return dfs(0)
                     
                 
-                
-                
-                
-                
-                
-                
-                                
-  
+            
