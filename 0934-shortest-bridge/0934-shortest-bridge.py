@@ -6,8 +6,9 @@ class Solution:
                 if grid[i][j]:  _x,_y = i,j
             
         
-        q = deque([(_x,_y)])
+        
         visit = [[0] * len(grid[0]) for _ in range(len(grid))]
+        q = deque([(_x,_y)])
         visit[_x][_y] = 1
         dx,dy = [0,0,1,-1],[1,-1,0,0]
         
