@@ -20,9 +20,7 @@ class Solution:
         
         for pair, value in zip(equations, values):
             union(pair[0], pair[1], value)
-        
-        print([-1 if (a not in parent or b not in parent or find(a)[0] != find(b)[0]) else find(a)[1] / find(b)[1] for a,b in queries])
-        print(parent)
+    
         return [-1 if (a not in parent or b not in parent or find(a)[0] != find(b)[0]) else find(a)[1] / find(b)[1] for a,b in queries]
                 
             
