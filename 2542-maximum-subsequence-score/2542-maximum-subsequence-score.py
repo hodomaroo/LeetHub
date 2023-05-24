@@ -1,6 +1,6 @@
 class Solution:
     def maxScore(self, nums1: List[int], nums2: List[int], k: int) -> int:
-        sortedNums = sorted(zip(nums1, nums2))
+        sortedNums = sorted(list(range(len(nums1))), key = lambda idx : nums1[idx])
         keys = sorted(nums2)
         minHeap,total = [],0
         
@@ -10,13 +10,13 @@ class Solution:
                 total -= heappop(minHeap)[1]
             
             while  len(minHeap) < k and len(sortedNums) >= (k - len(minHeap)):
-                if curV > sortedNums[-1][1]: 
+                if curV > nums2[sortedNums[-1]]: 
                     sortedNums.pop()
                     continue
                     
-                v, v2 = sortedNums.pop()
-                heappush(minHeap, (v2, v))
-                total += v
+                idx = sortedNums.pop()                
+                heappush(minHeap, (nums2[idx], nums1[idx]))
+                total += nums1[idx]
         
             if len(minHeap) == k:
                 ans = max(ans, total * curV)
