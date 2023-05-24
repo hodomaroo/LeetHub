@@ -21,6 +21,7 @@ class Solution:
             if len(minHeap) == k:
                 ans = max(ans, total * curV)
             
+            if len(sortedNums) < (k - len(minHeap)):    break
         return ans
                 
         
