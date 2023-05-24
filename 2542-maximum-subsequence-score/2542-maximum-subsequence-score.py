@@ -4,18 +4,10 @@ class Solution:
         keys = sorted(nums2)
         minHeap,total = [],0
         
-        
-        #print(sortedNums)
-        #print(keys)
-        
         ans = 0
         for curV in keys:
-            
             while minHeap and minHeap[0][0] < curV:
                 total -= heappop(minHeap)[1]
-            
-            #print("S",sortedNums)
-            
             
             while  len(minHeap) < k:
                 if len(sortedNums) < k - len(minHeap): break
@@ -30,7 +22,6 @@ class Solution:
             if len(minHeap) == k:
                 ans = max(ans, total * curV)
             
-            #print(minHeap, total, curV)
         return ans
                 
         
